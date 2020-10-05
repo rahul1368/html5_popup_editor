@@ -49,7 +49,6 @@ modalbgColorElem.onkeyup = function(e){
         return;
     }
     modalbgColor = e.target.innerText;
-
 }
 modalContentbgColorElem.onkeyup = function(e){
     if(e.keyCode === 13){

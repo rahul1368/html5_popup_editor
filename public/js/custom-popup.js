@@ -1,24 +1,39 @@
+/**
+ * Script to load custom popup modal
+ * Author: Rahul Kumar
+ */
 (function(){
+    // Proxy url to avoid CORS 
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    //Fetching all changes saved by user for custom popup modal by HTML5 Popup Editor
     fetch(proxyUrl + 'http://15.206.195.65/api/v1/items/', {
         method: 'get',headers:{"Accept":"application/json","Access-Control-Allow-Origin":"['*']"},
     }).then(function(response) {
         return response.json();
     }).then(function(response){
+        //Pop up modal changes object
         var modalChangesObj = {};
+        //Check if response is not empty
         if(response instanceof Array && response.length > 0){
+            //Building Pop up modal changes object from the response
             for (const item of response) {
                 modalChangesObj[item.title] = {
                     top:item.top,left:item.left,content:item.content
                 }
             }
         }
+        //Calling method to construct custom popup modal
         createCustomPopup(modalChangesObj);
     }).catch(function(err) {
         console.log(err);
     });
     /** Create custom popup */
-
+    /**
+     * Returns HTML element after adding style and attributes
+     * @param {String} type 
+     * @param {Object} styleObj 
+     * @param {Object} attributeObj 
+     */
     function createElementFunc(type,styleObj,attributeObj){
         var htmlElem = document.createElement(type);
         Object.keys(styleObj).map(key => {
@@ -29,7 +44,11 @@
         });
         return htmlElem;
     }
-    
+    /**
+     * Setting the correct top and left value for an element
+     * @param {Object} src: Postion object of an element 
+     * @param {*} dest : HTML element whose top and left values should be set
+     */
     function setPosition(src,dest){
         if(src.top != '0px'){
             dest.top = src.top;
@@ -39,7 +58,12 @@
         }
         return dest;
     }
+    /**
+     * Method that constructs custom popup modal
+     * @param {Object} modalObj : custom popup modal changes object
+     */
     function createCustomPopup(modalObj){
+
         var myModalDiv = createElementFunc('div',{
             display: 'block',
             position: 'relative',
@@ -56,13 +80,13 @@
             margin: '0 auto'
         
         },{className:'modal',id:'myModal1'});
+        //Modal content div
         var modalContentDiv = createElementFunc('div',{
             backgroundColor: modalObj.modalContentbgColor.content,
             margin: '0% auto',
             width: '550px',
             height:'550px',
             borderRadius:'50%',
-            // border: 'none !important',
             border: '10px solid #ffffff',
 
         },{className:'modal-content',id:'customModalContentDiv'});
@@ -106,7 +130,6 @@
             position:'relative'
         }
         setPosition(modalObj.headerH2,headerStyle);
-
 
         var headerElem = createElementFunc('h2',headerStyle,{innerHTML:modalObj.headerH2.content});
         

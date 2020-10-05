@@ -8,7 +8,7 @@
         <link href="{{ URL::asset('css/draganddrop.css') }}" rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="{{ URL::asset('js/draganddrop.js') }}" type='text/javascript'></script>
-        <!-- <link rel="stylesheet" href="./css/layout.css"> -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link rel="stylesheet" href="{{ URL::asset('css/layout.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/modal.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/editor.css') }}">
@@ -66,12 +66,13 @@
         </div>
         <div class="main">
             <!-- Trigger/Open The Modal -->
-            <button id="myBtn1">Open Modal Template</button>
+            <button id="openBtn">Open Modal Template</button>
+            <button  style="cursor:pointer;float:right;" type="button" id="closeBtn">Close Modal Template</button>
+
             <button id="saveBtn" type="button">Save Changes</button>
-            <div id="myModal1" class="modal">
+            <!-- <div id="myModal1" class="modal"> -->
                 <!-- Modal content -->
                 <div id="modalContentDiv" class="modal-content modal-content-box-shadow">
-                    <span class="close">×</span>
                     <div class="star-group">
                         <span id="leftStar" class="drag" style="font-size:100%;color:#c85b46;">★</span>
                         <span id="middleStar" class="drag" style="font-size:300%;color:#c85b46;">★</span>
@@ -102,7 +103,7 @@
                     
                     
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
         <script src="{{ URL::asset('js/selector.js') }}"></script>
         <script src="{{ URL::asset('js/editor.js') }}"></script>
@@ -137,7 +138,6 @@
             }
             
 
-            console.error("initial ==>",customPopUpModal) 
             function findPosition(element){
                 var left = element.style.left;
                 var top = element.style.top;
@@ -150,7 +150,8 @@
             });
             $(document).ready(function(){
                 // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+                var responseStatus = [];
+                var closeBtn = document.getElementById("closeBtn");
                 var saveBtn = document.getElementById("saveBtn");
                 saveBtn.onclick = function() {
                     customPopUpModal.leftStar.position = findPosition(document.getElementById("leftStar"));
@@ -169,9 +170,7 @@
                     customPopUpModal.modalbgColor.content = modalbgColor;
                     customPopUpModal.modalContentbgColor.content = modalContentbgColor;
 
-                    // Save all changes into back end
-                    console.error("on save ==>",customPopUpModal)
-                    
+                    // Save all changes into back end                    
                     
                     var leftStarEl = new requestObjConstructor(customPopUpModal.leftStar.position.top,customPopUpModal.leftStar.position.left,customPopUpModal.leftStar.content,'7','leftStar');
                     var rightStarEl = new requestObjConstructor(customPopUpModal.rightStar.position.top,customPopUpModal.rightStar.position.left,customPopUpModal.rightStar.content,'9','rightStar');
@@ -184,18 +183,28 @@
                     var footerPEl = new requestObjConstructor(customPopUpModal.footerP.position.top,customPopUpModal.footerP.position.left,customPopUpModal.footerP.content,'4','footerP');
                     var modalbgColorEl = new requestObjConstructor(customPopUpModal.modalbgColor.position.top,customPopUpModal.modalbgColor.position.left,customPopUpModal.modalbgColor.content,'5','modalbgColor');
                     var modalContentbgColorEl = new requestObjConstructor(customPopUpModal.modalContentbgColor.position.top,customPopUpModal.modalContentbgColor.position.left,customPopUpModal.modalContentbgColor.content,'6','modalContentbgColor');
-                    
-                    makePostRequest(leftStarEl);
-                    makePostRequest(rightStarEl);
-                    makePostRequest(middleStarEl);
-                    makePostRequest(headerH2El);
-                    makePostRequest(inputEl);
-                    makePostRequest(btnEl);
-                    makePostRequest(footerPEl);
-                    makePostRequest(modalbgColorEl);
-                    makePostRequest(modalContentbgColorEl);
-
-            
+                    Promise.all(
+                    [makePostRequest(leftStarEl),
+                    makePostRequest(rightStarEl),
+                    makePostRequest(middleStarEl),
+                    makePostRequest(headerH2El),
+                    makePostRequest(inputEl),
+                    makePostRequest(btnEl),
+                    makePostRequest(footerPEl),
+                    makePostRequest(modalbgColorEl),
+                    makePostRequest(modalContentbgColorEl)]).then(res => {
+                        swal({
+                            title: "Good job!",
+                            text: "All changes saved successfully!",
+                            icon: "success",
+                        });
+                    }).catch(err => {
+                        swal({
+                            title: "Oops!",
+                            text: "Something went wrong!",
+                            icon: "error",
+                        });
+                    });
                 }
                 function makePostRequest(params) {
                     const API_URL = '/api/v1/items/update';
@@ -207,15 +216,15 @@
                         }
                     } 
                     options.body = JSON.stringify(params);
-
-                    fetch(API_URL, options).then(function(response) {return response.json();}).then(function(res){console.error("ApiResponse ==>",res);}).catch(function(err) {console.log(err);});
+                    return fetch(API_URL, options);
+                    //fetch(API_URL, options).then(function(response) {return response.json();}).then(function(res){responseStatus.push(true);}).catch(function(err) {console.log(err);});
                 }
 
                     // Get the modal
-                var modal = document.getElementById("myModal1");
+                var modal = document.getElementById("modalContentDiv");
 
                 // Get the button that opens the modal
-                var btn = document.getElementById("myBtn1");
+                var btn = document.getElementById("openBtn");
 
                 // When the user clicks on the button, open the modal
                 btn.onclick = function() {
@@ -228,14 +237,13 @@
                         modal.style.display = "none";
                     }
                 }
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
+                // When the user clicks on closeBtn, close the modal
+                closeBtn.onclick = function() {
                     modal.style.display = "none";
                 }
 
                 btnElem.onmousemove = function(e){
                     if(e.target.style.top && e.target.style.left){
-                        console.error(e.target.style.top,e.target.style.left);
                         //Updating popup object 
                         customPopUpModal.btn.position.top = e.target.style.top;
                         customPopUpModal.btn.position.left = e.target.style.left;

@@ -107,7 +107,7 @@
         </div>
         <script src="{{ URL::asset('js/selector.js') }}"></script>
         <script src="{{ URL::asset('js/editor.js') }}"></script>
-        <script src="{{ URL::asset('js/custom-popup.js') }}"></script>
+        <!-- <script src="{{ URL::asset('js/custom-popup.js') }}"></script> -->
         <script>
 
             var objConstructor = function(position,content){
@@ -217,7 +217,6 @@
                     } 
                     options.body = JSON.stringify(params);
                     return fetch(API_URL, options);
-                    //fetch(API_URL, options).then(function(response) {return response.json();}).then(function(res){responseStatus.push(true);}).catch(function(err) {console.log(err);});
                 }
 
                     // Get the modal

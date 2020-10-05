@@ -24,11 +24,11 @@ Please follow the guide.
 
 ## Installation of Custom Popup Modal
 
-    Add the following script inside the head tag of webpage.
+Add the following script inside the head tag of webpage.
 
-    ```
-    <script src="http://15.206.195.65/js/custom-popup.js" async="true"></script>
+```    
+<script src="http://15.206.195.65/js/custom-popup.js" async="true"></script>
 
-    ```
+```
 
 

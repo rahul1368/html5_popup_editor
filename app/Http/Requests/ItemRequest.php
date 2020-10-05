@@ -26,6 +26,7 @@ class ItemRequest extends FormRequest
         return [
             'slug' => '',
             'title' => 'required|min:3',
+            'id' => 'required',
             'top' => 'required|min:3',
             'left' => 'required|min:3',
             'content' => 'required|min:3',

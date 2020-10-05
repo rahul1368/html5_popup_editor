@@ -19,7 +19,7 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        return Item::loadAll();
+        //
     }
 
     /**
@@ -40,14 +40,7 @@ class ItemController extends Controller
      */
     public function store(ItemRequest $request)
     {
-        var_dump($request);
-
-        $user = $request->user();
-        $item = new Item($request->validated());
-        $item->slug = Str::slug($request->get('title'));
-        $user->items()->save($item);
-
-        return response()->json($item, 201);
+       //
     }
 
     /**
@@ -68,15 +61,9 @@ class ItemController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ItemRequest $request, $id)
+    public function update(ItemRequest $request,$id)
     {
-        $item = Item::findOrFail($id);
-
-        $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
-        $item->update($data);
-
-        return response()->json($item, 200);
+        //
     }
 
     /**
@@ -87,10 +74,6 @@ class ItemController extends Controller
      */
     public function delete($id)
     {
-        $item = Item::findOrFail($id);
-
-        $item->delete();
-
-        return response([], 200);
+       //
     }
 }

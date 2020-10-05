@@ -1,12 +1,18 @@
 <?php
+Use App\Item;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-Route::get('/', 'ItemController@index')->name('items.index');
-Route::post('/', 'ItemController@store')->name('items.store');
 
-// Route::group(['middleware' => 'auth:api'], function() {
-//     Route::post('/', 'ItemController@store')->name('items.store');
-//     Route::match(['put', 'patch'], '/{id}', 'ItemController@update')->name('items.update');
-//     Route::delete('/{id}', 'ArticleController@delete')->name('items.delete');
-// });
+Route::post('/update', function(Request $request) {
+    $id = $request->get('id');
+    $item = Item::findOrFail($id);
+    $item->update($request->all());
+
+    return $item;
+});
+
+Route::get('/', function() {
+    return Item::all();
+});

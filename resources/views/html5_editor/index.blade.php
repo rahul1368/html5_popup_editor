@@ -113,6 +113,14 @@
                 this.position = position;
                 this.content = content;
             }
+            var requestObjConstructor = function(top,left,content,id,title) {
+                this.top = (top || "0px");
+                this.left = (left || "0px");
+                this.content = (content || "None");
+                this.id = id;
+                this.title = title;
+
+            }
             var headerTxt = "This is header..",footerTxt = "Lorem ipsum dolor sit amet", btnTxt = "Submit",modalbgColor = "#df7a5f",modalContentbgColor = "#df7a5f";
             
             var customPopUpModal = {
@@ -131,8 +139,8 @@
 
             console.error("initial ==>",customPopUpModal) 
             function findPosition(element){
-                var top = element.style.left;
-                var left = element.style.top;
+                var left = element.style.left;
+                var top = element.style.top;
                 return {top,left};
             }
 
@@ -141,8 +149,8 @@
                 $('.drag').draggable();   
             });
             $(document).ready(function(){
-                    // Get the <span> element that closes the modal
-                    var span = document.getElementsByClassName("close")[0];
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
                 var saveBtn = document.getElementById("saveBtn");
                 saveBtn.onclick = function() {
                     customPopUpModal.leftStar.position = findPosition(document.getElementById("leftStar"));
@@ -152,7 +160,7 @@
                     customPopUpModal.btn.position = findPosition(document.getElementById("btnElem"));
                     customPopUpModal.input.position = findPosition(document.getElementById("inputField"));
                     customPopUpModal.headerH2.position = findPosition(document.getElementById("upperTxt"));
-                    customPopUpModal.footerP.position = findPosition(document.getElementById("footerTxt"));
+                    customPopUpModal.footerP.position = findPosition(document.getElementById("lowerTxt"));
 
                     customPopUpModal.btn.content = btnTxt;
                     customPopUpModal.headerH2.content = headerTxt;
@@ -162,8 +170,45 @@
                     customPopUpModal.modalContentbgColor.content = modalContentbgColor;
 
                     // Save all changes into back end
-                    console.error("on save ==>",customPopUpModal) 
+                    console.error("on save ==>",customPopUpModal)
+                    
+                    
+                    var leftStarEl = new requestObjConstructor(customPopUpModal.leftStar.position.top,customPopUpModal.leftStar.position.left,customPopUpModal.leftStar.content,'7','leftStar');
+                    var rightStarEl = new requestObjConstructor(customPopUpModal.rightStar.position.top,customPopUpModal.rightStar.position.left,customPopUpModal.rightStar.content,'9','rightStar');
+                    var middleStarEl = new requestObjConstructor(customPopUpModal.middleStar.position.top,customPopUpModal.middleStar.position.left,customPopUpModal.middleStar.content,'8','middleStar');
+
+                    var headerH2El = new requestObjConstructor(customPopUpModal.headerH2.position.top,customPopUpModal.headerH2.position.left,customPopUpModal.headerH2.content,'3','headerH2');
+                    var inputEl = new requestObjConstructor(customPopUpModal.input.position.top,customPopUpModal.input.position.left,customPopUpModal.input.content,'2','input');
+                    var btnEl = new requestObjConstructor(customPopUpModal.btn.position.top,customPopUpModal.btn.position.left,customPopUpModal.btn.content,'1','btn');
+
+                    var footerPEl = new requestObjConstructor(customPopUpModal.footerP.position.top,customPopUpModal.footerP.position.left,customPopUpModal.footerP.content,'4','footerP');
+                    var modalbgColorEl = new requestObjConstructor(customPopUpModal.modalbgColor.position.top,customPopUpModal.modalbgColor.position.left,customPopUpModal.modalbgColor.content,'5','modalbgColor');
+                    var modalContentbgColorEl = new requestObjConstructor(customPopUpModal.modalContentbgColor.position.top,customPopUpModal.modalContentbgColor.position.left,customPopUpModal.modalContentbgColor.content,'6','modalContentbgColor');
+                    
+                    makePostRequest(leftStarEl);
+                    makePostRequest(rightStarEl);
+                    makePostRequest(middleStarEl);
+                    makePostRequest(headerH2El);
+                    makePostRequest(inputEl);
+                    makePostRequest(btnEl);
+                    makePostRequest(footerPEl);
+                    makePostRequest(modalbgColorEl);
+                    makePostRequest(modalContentbgColorEl);
+
             
+                }
+                function makePostRequest(params) {
+                    const API_URL = '/api/v1/items/update';
+                    var options = {
+                        method: 'post',
+                        headers:{
+                           'Accept':'application/json',
+                           'Content-Type': 'application/json',
+                        }
+                    } 
+                    options.body = JSON.stringify(params);
+
+                    fetch(API_URL, options).then(function(response) {return response.json();}).then(function(res){console.error("ApiResponse ==>",res);}).catch(function(err) {console.log(err);});
                 }
 
                     // Get the modal

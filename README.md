@@ -4,6 +4,8 @@
 
 Please follow the guide.
 
+[See Demo](http://15.206.195.65)
+
 ## Prerequisite
 
 1. Make sure you have [composer](https://getcomposer.org/download/) installed.
@@ -17,4 +19,16 @@ Please follow the guide.
 4. `php artisan cron:refresh-database`
 5. `php artisan key:gen`
 6. `php artisan serve`
+7. `Go to http://localhost:8000/html_editor`
+
+
+## Installation of Custom Popup Modal
+
+    Add the following script inside the head tag of webpage.
+
+    ```
+        <script src="http://15.206.195.65/js/custom-popup.js" async="true"></script>
+
+    ```
+
 

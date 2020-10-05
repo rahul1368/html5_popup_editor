@@ -73,7 +73,15 @@
             textAlign: 'center',
             marginBottom: '20%'
         },{});
-        var closeSpanElem = createElementFunc('span',{},{innerHTML:'x',id:'customPopUpClose'});
+        var closeSpanElem = createElementFunc('span',{
+            background: '#333',
+            color: '#fff',
+            textDecoration: 'none',
+            border: '3px solid #fff',
+            borderRadius:'50%',
+            padding: '1px 8px',
+            margin:'0px 0px 0px 0px'
+        },{innerHTML:'x',id:'customPopUpClose'});
         closeSpanElem.onclick = function(){
             document.getElementById('customModalContentDiv').style.display = 'none';
         }

@@ -112,3 +112,36 @@ btnElem.onkeyup = function(e){
     btnTxtElem.innerText = btnTxt;
 };
 
+/**
+ * Listeners for inline editing
+ */
+
+upperTxtElem.onclick = function(e){
+    var self = this;
+    setTimeout(function() {
+        self.focus();
+        document.execCommand('selectAll', false, null);
+        // collapse selection to the end
+        document.getSelection().collapseToEnd();  
+     }, 0);
+}
+
+lowerTxtElem.onclick = function(e){
+    var self = this;
+    setTimeout(function() {
+        self.focus();
+        document.execCommand('selectAll', false, null);
+        // collapse selection to the end
+        document.getSelection().collapseToEnd();  
+     }, 0);
+}
+
+btnElem.onclick = function(e){
+    var self = this;
+    setTimeout(function() {
+        self.focus();
+        document.execCommand('selectAll', false, null);
+        // collapse selection to the end
+        document.getSelection().collapseToEnd();  
+     }, 0);
+}

@@ -2,9 +2,9 @@
 
 ## HTML5 Popup Editor
 
-Please follow the guide.
+This editor customizes the popup modal template.
 
-[See Demo](http://15.206.195.65/html_editor)
+[See Demo](http://15.206.195.65/html5_editor)
 
 ## Prerequisite
 

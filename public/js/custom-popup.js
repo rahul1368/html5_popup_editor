@@ -82,7 +82,8 @@
             padding: '1px 8px',
             marginLeft:'48%',
             marginTop:'8px',
-            display:'inline-block'
+            display:'inline-block',
+            cursor:'pointer'
         },{innerHTML:'x',id:'customPopUpClose'});
         closeSpanElem.onclick = function(){
             document.getElementById('customModalContentDiv').style.display = 'none';

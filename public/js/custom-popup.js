@@ -74,13 +74,15 @@
             marginBottom: '20%'
         },{});
         var closeSpanElem = createElementFunc('span',{
-            background: '#333',
-            color: '#fff',
+            background: 'rgb(255, 255, 255)',
+            color: 'rgb(8, 7, 7)',
             textDecoration: 'none',
             border: '3px solid #fff',
             borderRadius:'50%',
             padding: '1px 8px',
-            margin:'0px 0px 0px 0px'
+            marginLeft:'48%',
+            marginTop:'8px',
+            display:'inline-block'
         },{innerHTML:'x',id:'customPopUpClose'});
         closeSpanElem.onclick = function(){
             document.getElementById('customModalContentDiv').style.display = 'none';

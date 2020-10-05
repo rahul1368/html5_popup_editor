@@ -4,7 +4,7 @@
 
 Please follow the guide.
 
-[See Demo](http://15.206.195.65)
+[See Demo](http://15.206.195.65/html_editor)
 
 ## Prerequisite
 
@@ -27,7 +27,7 @@ Please follow the guide.
     Add the following script inside the head tag of webpage.
 
     ```
-        <script src="http://15.206.195.65/js/custom-popup.js" async="true"></script>
+    <script src="http://15.206.195.65/js/custom-popup.js" async="true"></script>
 
     ```
 

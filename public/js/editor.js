@@ -16,7 +16,7 @@ footerTxtElem.onkeyup = function(e){
 }
 modalbgColorElem.onkeyup = function(e){
     modalbgColor = e.target.innerText;
-    document.getElementById("myModal1").style.backgroundColor = modalbgColor;
+    //document.getElementById("myModal1").style.backgroundColor = modalbgColor;
 
 }
 modalContentbgColorElem.onkeyup = function(e){

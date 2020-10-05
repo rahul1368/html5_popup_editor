@@ -76,7 +76,7 @@
             backgroundColor: 'rgb(0,0,0)', /* Fallback color */
             backgroundColor: 'rgba(0,0,0,0.4)', /* Black w/ opacity */
         
-        },{className:'modal',id:'customModalDiv'});
+        },{className:'custom-modal-123',id:'customModalDiv'});
         //Modal content div
         var modalContentDiv = createElementFunc('div',{
             display: 'block',
@@ -84,7 +84,7 @@
             zIndex: '1',
             left: '0',
             top: '0',
-            overflow: 'auto',
+            overflow: 'hidden',
             backgroundColor: modalObj.modalContentbgColor.content,
             margin: '0% auto',
             width: '550px',
@@ -92,7 +92,7 @@
             borderRadius:'50%',
             border: '10px solid #ffffff',
 
-        },{className:'modal-content',id:'customModalContentDiv'});
+        },{className:'custom-modal-content-123',id:'customModalContentDiv'});
         var starGroupDiv = createElementFunc('div',{
             display: 'block',
             width: '100%',

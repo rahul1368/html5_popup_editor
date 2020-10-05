@@ -82,6 +82,12 @@
         },{className:'modal',id:'myModal1'});
         //Modal content div
         var modalContentDiv = createElementFunc('div',{
+            display: 'block',
+            position: 'relative',
+            zIndex: '1',
+            left: '0',
+            top: '0',
+            overflow: 'auto',
             backgroundColor: modalObj.modalContentbgColor.content,
             margin: '0% auto',
             width: '550px',

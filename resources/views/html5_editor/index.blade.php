@@ -92,7 +92,7 @@
                     <button contenteditable="true" id="btnElem" class="drag" type="button" style="
                         width: 50%;
                         height: 50px;
-                        margin-top: 0rem;
+                        margin-top: 2.5rem;
                         border-radius: 7px;
                         background-color: #484343;
                         color: #c3c3c3;

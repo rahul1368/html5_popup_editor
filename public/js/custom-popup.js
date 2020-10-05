@@ -133,11 +133,11 @@
 
         var headerElem = createElementFunc('h2',headerStyle,{innerHTML:modalObj.headerH2.content});
         
-        var inputStyle = {height:'54px',width:'70%',borderRadius:'7px',padding:'1rem',position:'relative',backgroundColor:'#fcfeff',display: 'block',margin : '0 auto 8.5rem auto'}
+        var inputStyle = {borderStyle:'none',height:'54px',width:'70%',borderRadius:'7px',padding:'1rem',position:'relative',backgroundColor:'#fcfeff',display: 'block',margin : '0 auto 4.5rem auto'}
         setPosition(modalObj.input,inputStyle);
         var inputElem = createElementFunc('input',inputStyle,{placeholder:'Enter some text...'});
         
-        var btnStyle = {position:'relative',color:'#c3c3c3',borderRadius:'7px',backgroundColor:'#484343',width:'50%',height:'50px',display: 'block',margin : '0rem auto 2rem auto'}
+        var btnStyle = {borderStyle:'none',position:'relative',color:'#c3c3c3',borderRadius:'7px',backgroundColor:'#484343',width:'50%',height:'50px',display: 'block',margin : '0rem auto 2.5rem auto'}
         setPosition(modalObj.btn,btnStyle);
         var btnElem = createElementFunc('button',btnStyle,{innerHTML:'Submit'});
         

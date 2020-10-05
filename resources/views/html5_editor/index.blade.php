@@ -40,14 +40,14 @@
                 </div>
                 <div class="content-edit">
                     <label for="modalbgColor"> Modal BG Color</label>
-                    <input type="color" 
+                    <input type="color" style="cursor:pointer;display:block;margin:5px 0px 0px 10px;"
                         id="modalbgColor" 
                         name="modalbgColor" value="#df7a5f">
                         
                 </div>
                 <div class="content-edit">
                     <label for="modalContentbgColor"> Modal Content BG Color</label>
-                    <input type="color" 
+                    <input type="color" style="cursor:pointer;display:block;margin:5px 0px 0px 10px;"
                         id="modalContentbgColor" 
                         name="modalContentbgColor" value="#df7a5f" >
         

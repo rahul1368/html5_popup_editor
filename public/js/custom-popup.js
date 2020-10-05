@@ -65,21 +65,18 @@
     function createCustomPopup(modalObj){
 
         var myModalDiv = createElementFunc('div',{
-            display: 'block',
-            position: 'relative',
-            zIndex: '1',
+            display: 'none', /* Hidden by default */
+            position: 'fixed', /* Stay in place */
+            zIndex: '1', /* Sit on top */
             left: '0',
             top: '0',
-            overflow: 'auto',
-            backgroundColor: 'rgb(0,0,0)', 
-            backgroundColor: '#df7a5f', 
-            width: '550px',
-            height: '550px',
-            borderRadius: '50%',
-            border: '10px solid #ffffff',
-            margin: '0 auto'
+            width: '100%', /* Full width */
+            height: '100%', /* Full height */
+            overflow: 'auto', /* Enable scroll if needed */
+            backgroundColor: 'rgb(0,0,0)', /* Fallback color */
+            backgroundColor: 'rgba(0,0,0,0.4)', /* Black w/ opacity */
         
-        },{className:'modal',id:'myModal1'});
+        },{className:'modal',id:'customModalDiv'});
         //Modal content div
         var modalContentDiv = createElementFunc('div',{
             display: 'block',
@@ -114,9 +111,11 @@
             marginTop:'8px',
             display:'inline-block',
             cursor:'pointer'
-        },{innerHTML:'x',id:'customPopUpClose'});
+        },{innerHTML:'&times;',id:'customPopUpClose'});
         closeSpanElem.onclick = function(){
-            document.getElementById('customModalContentDiv').style.display = 'none';
+            //document.getElementById('customModalContentDiv').style.display = 'none';
+            document.getElementById('customModalDiv').style.display = 'none';
+
         }
         var leftStarStyle = {position:"relative",fontSize:"100%",color:"#c85b46",display:'inline-block'};
         setPosition(modalObj.leftStar,leftStarStyle);
@@ -161,8 +160,10 @@
         modalContentDiv.appendChild(inputElem);
         modalContentDiv.appendChild(btnElem);
         modalContentDiv.appendChild(footerElem);
-        //myModalDiv.appendChild(modalContentDiv);
-
-        document.body.appendChild(modalContentDiv);
+        
+        
+        myModalDiv.appendChild(modalContentDiv);
+        myModalDiv.style.display = "block";
+        document.body.appendChild(myModalDiv);
     }
 })();

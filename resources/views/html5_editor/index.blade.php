@@ -39,20 +39,18 @@
                     </div>
                 </div>
                 <div class="content-edit">
-                    <label for="headerTxt"> Modal BG Color</label>
-                    <div contenteditable="true" 
+                    <label for="modalbgColor"> Modal BG Color</label>
+                    <input type="color" 
                         id="modalbgColor" 
-                        name="modalbgColor" >
-                        #df7a5f
-                    </div>
+                        name="modalbgColor" value="#df7a5f">
+                        
                 </div>
                 <div class="content-edit">
-                    <label for="headerTxt"> Modal Content BG Color</label>
-                    <div contenteditable="true" 
+                    <label for="modalContentbgColor"> Modal Content BG Color</label>
+                    <input type="color" 
                         id="modalContentbgColor" 
-                        name="modalContentbgColor" >
-                        #df7a5f
-                    </div>
+                        name="modalContentbgColor" value="#df7a5f" >
+        
                 </div>
                 <!-- <div contenteditable="true" class="content-edit">
                     <label for="inputFieldEdit">Input Field</label>
@@ -79,13 +77,13 @@
                         <span id="rightStar" class="drag" style="font-size:100%;color:#c85b46;">★</span>
                     </div>
                     <h2 contenteditable="true" id="upperTxt" class="drag" style="
-                        margin-top: 7%;color: #fcfefd;text-align: center;
+                        margin: auto;width:50%;color: #fcfefd;text-align: center;
                     ">This is header..</h2>
                     <input id="inputField" class="drag" type="text" placeholder="Enter some text..." style="
                         width: 70%;
                         height: 54px;
                         border-radius: 7px;
-                        margin-top: 8.5rem;
+                        margin-top: 5.5rem;
                         background-color: #fcfeff;
                         padding: 1rem;
                     ">

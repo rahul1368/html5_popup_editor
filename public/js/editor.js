@@ -58,7 +58,7 @@ footerTxtElem.onkeyup = function(e){
     footerTxt = e.target.innerText;
     lowerTxtElem.innerText = footerTxt;
 }
-modalbgColorElem.onkeyup = function(e){
+modalbgColorElem.onchange = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
         var child = e.target.lastElementChild;
@@ -68,9 +68,9 @@ modalbgColorElem.onkeyup = function(e){
         }
         return;
     }
-    modalbgColor = e.target.innerText;
+    modalbgColor = e.target.value;
 }
-modalContentbgColorElem.onkeyup = function(e){
+modalContentbgColorElem.onchange = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
         var child = e.target.lastElementChild;
@@ -80,7 +80,7 @@ modalContentbgColorElem.onkeyup = function(e){
         }
         return;
     }
-    modalContentbgColor = e.target.innerText;
+    modalContentbgColor = e.target.value;
     document.getElementById("modalContentDiv").style.backgroundColor = modalContentbgColor;
 
 }

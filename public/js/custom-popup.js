@@ -1,6 +1,5 @@
 (function(){
-	
-	const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     fetch(proxyUrl + 'http://15.206.195.65/api/v1/items/', {
         method: 'get',headers:{"Accept":"application/json","Access-Control-Allow-Origin":"['*']"},
     }).then(function(response) {
@@ -16,11 +15,7 @@
         }
         createCustomPopup(modalChangesObj);
     }).catch(function(err) {
-        swal({
-            title: "Oops..",
-            text: "Something went wrong",
-            icon: "failure",
-        });
+        console.log(err);
     });
     /** Create custom popup */
 

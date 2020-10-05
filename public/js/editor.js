@@ -20,6 +20,11 @@
 btnTxtElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
+        var child = e.target.lastElementChild;
+        while(child){
+            e.target.removeChild(child);
+            child = e.target.lastElementChild;
+        }
         return;
     }
     btnTxt = e.target.innerText;
@@ -29,6 +34,11 @@ btnTxtElem.onkeyup = function(e){
 headerTxtElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
+        var child = e.target.lastElementChild;
+        while(child){
+            e.target.removeChild(child);
+            child = e.target.lastElementChild;
+        }
         return;
     }
     headerTxt = e.target.innerText;
@@ -38,6 +48,11 @@ headerTxtElem.onkeyup = function(e){
 footerTxtElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
+        var child = e.target.lastElementChild;
+        while(child){
+            e.target.removeChild(child);
+            child = e.target.lastElementChild;
+        }
         return;
     }
     footerTxt = e.target.innerText;
@@ -46,6 +61,11 @@ footerTxtElem.onkeyup = function(e){
 modalbgColorElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
+        var child = e.target.lastElementChild;
+        while(child){
+            e.target.removeChild(child);
+            child = e.target.lastElementChild;
+        }
         return;
     }
     modalbgColor = e.target.innerText;
@@ -53,6 +73,11 @@ modalbgColorElem.onkeyup = function(e){
 modalContentbgColorElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
+        var child = e.target.lastElementChild;
+        while(child){
+            e.target.removeChild(child);
+            child = e.target.lastElementChild;
+        }
         return;
     }
     modalContentbgColor = e.target.innerText;
@@ -78,7 +103,7 @@ lowerTxtElem.onkeyup = function(e){
     footerTxt = e.target.innerText;
     footerTxtElem.innerText = footerTxt;
 };
-btnElem = function(e){
+btnElem.onkeyup = function(e){
     if(e.keyCode === 13){
         e.preventDefault();
         return;

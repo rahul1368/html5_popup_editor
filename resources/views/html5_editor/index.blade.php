@@ -78,27 +78,27 @@
                         <span id="middleStar" class="drag" style="font-size:300%;color:#c85b46;">★</span>
                         <span id="rightStar" class="drag" style="font-size:100%;color:#c85b46;">★</span>
                     </div>
-                    <h4 contenteditable="true" id="upperTxt" class="drag" style="
+                    <h2 contenteditable="true" id="upperTxt" class="drag" style="
                         margin-top: 7%;color: #fcfefd;text-align: center;
-                    ">This is header..</h4>
+                    ">This is header..</h2>
                     <input id="inputField" class="drag" type="text" placeholder="Enter some text..." style="
                         width: 70%;
-                        height: 37px;
+                        height: 54px;
                         border-radius: 7px;
-                        margin-top: 3.5rem;
+                        margin-top: 8.5rem;
                         background-color: #fcfeff;
                         padding: 1rem;
                     ">
                     <button contenteditable="true" id="btnElem" class="drag" type="button" style="
-                        width: 71%;
-                        height: 42px;
-                        margin-top: 2rem;
+                        width: 50%;
+                        height: 50px;
+                        margin-top: 0rem;
                         border-radius: 7px;
                         background-color: #484343;
                         color: #c3c3c3;
                     ">Submit</button>
                     <p contenteditable="true" id="lowerTxt" class="drag" style="
-            text-align: center;color: #f4d7ca;margin: 1.5rem auto;width: 37%;width: 44%;
+            text-align: center;color: #f4d7ca;margin: 5.5rem auto;width: 37%;width: 44%;
                     ">Lorem ipsum dolor sit amet</p>
                     
                     
